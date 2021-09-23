@@ -22,6 +22,7 @@ describe('03_separation-of-concerns-demo routes', () => {
     return request(app)
       .post('/api/v1/orders')
       .send({ quantity: 10 })
+
       .then(res => {
         // expect(createMessage).toHaveBeenCalledTimes(1);
         expect(res.body).toEqual({
@@ -37,7 +38,6 @@ describe('03_separation-of-concerns-demo routes', () => {
     return request(app)
       .get('/api/v1/orders')
       .then(res => {
-        // expect(createMessage).toHaveBeenCalledTimes(1);
         expect(res.body).toEqual([{
           id: '1',
           quantity: 2
@@ -59,9 +59,9 @@ describe('03_separation-of-concerns-demo routes', () => {
       });
   });
 
-  it('patches an order by the id', async() => {
+  it('patches an order by the selected id', () => {
     return request(app)
-      .patch('api/v1/orders/1')
+      .patch('/api/v1/orders/1')
       .send({ quantity: 5 })
       .then(res => {
         expect(res.body).toEqual({ id: '1', quantity: 5 });
