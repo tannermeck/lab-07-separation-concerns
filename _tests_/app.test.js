@@ -67,4 +67,14 @@ describe('03_separation-of-concerns-demo routes', () => {
         expect(res.body).toEqual({ id: '1', quantity: 5 });
       });
   });
+  it('deletes the order by the id selected', async() => {
+    await request(app)
+      .post('/api/v1/orders')
+      .send({ quantity: 20 });
+    return request(app)
+      .delete('/api/v1/orders/1')
+      .then(res => {
+        expect(res.body).toEqual({ id: '2', quantity: 20 });
+      });
+  });
 });
