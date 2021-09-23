@@ -72,7 +72,7 @@ describe('03_separation-of-concerns-demo routes', () => {
       .post('/api/v1/orders')
       .send({ quantity: 20 });
     return request(app)
-      .delete('/api/v1/orders/1')
+      .delete('/api/v1/orders/2')
       .then(res => {
         expect(res.body).toEqual({ id: '2', quantity: 20 });
       });
